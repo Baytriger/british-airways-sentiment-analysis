@@ -1,2 +1,2 @@
 # british-airways-sentiment-analysis
-Sentiment analysis of British Airways customer reviews using NLP to classify feedback and extract actionable insights.
+NLP-based sentiment analysis of British Airways customer reviews, including polarity scoring, automated responses, and structured output generation for insight extraction.
