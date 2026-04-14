@@ -63,6 +63,7 @@ python app.py
 * `src/` → sentiment logic
 * `outputs/` → generated results and reports
 * `app.py` → main execution script
+* - data/ → dataset (not included or sample only)
 
 ---
 
