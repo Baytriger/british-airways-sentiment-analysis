@@ -1,0 +1,24 @@
+import pandas as pd
+from src.sentiment import get_sentiment, basic_reply
+
+# Load dataset (we’ll add it later)
+data = pd.read_csv("data/ba_reviews.csv")
+
+# Check column
+if "reviews" not in data.columns:
+    raise ValueError("Dataset must contain a 'reviews' column")
+
+# Apply sentiment
+data["Sentiment"], data["Polarity"] = zip(*data["reviews"].apply(get_sentiment))
+
+# Generate replies
+data["Reply"] = data["Sentiment"].apply(basic_reply)
+
+# Save outputs
+data.to_csv("outputs/analyzed_reviews.csv", index=False)
+
+data[data["Sentiment"] == "Positive"].to_csv("outputs/positive_reviews.csv", index=False)
+data[data["Sentiment"] == "Negative"].to_csv("outputs/negative_reviews.csv", index=False)
+data[data["Sentiment"] == "Neutral"].to_csv("outputs/neutral_reviews.csv", index=False)
+
+print("Analysis complete. Check outputs folder.")
