@@ -1,17 +1,13 @@
 import pandas as pd
 from src.sentiment import get_sentiment, basic_reply
 
-# Load dataset (we’ll add it later)
 data = pd.read_csv("data/ba_reviews.csv")
 
-# Check column
 if "reviews" not in data.columns:
     raise ValueError("Dataset must contain a 'reviews' column")
 
-# Apply sentiment
 data["Sentiment"], data["Polarity"] = zip(*data["reviews"].apply(get_sentiment))
 
-# Generate replies
 data["Reply"] = data["Sentiment"].apply(basic_reply)
 
 # Save outputs
